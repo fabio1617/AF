@@ -1,15 +1,26 @@
-transaction_id,user_id,amount,country,merchant,channel,timestamp,status,is_fraud
-1,101,120,BR,Padaria,pos,2026-01-01 09:00:00,approved,0
-2,101,80,BR,Supermercado,pos,2026-01-01 09:10:00,approved,0
-
-3,101,5000,US,Amazon,online,2026-01-01 10:00:00,approved,1
-4,101,7000,NG,Unknown,online,2026-01-01 10:02:00,approved,1
-5,101,9000,PK,Unknown,online,2026-01-01 10:04:00,approved,1
-
-6,102,50,BR,Café,pos,2026-01-01 11:00:00,approved,0
-7,102,60,BR,Café,pos,2026-01-01 11:05:00,approved,0
-
-8,103,200,BR,Loja,pos,2026-01-01 12:00:00,approved,0
-
-3,101,5000,US,Amazon,online,2026-01-01 10:00:00,approved,1
-4,101,7000,NG,Unknown,online,2026-01-01 10:02:00,approved,1
+transaction_id,user_id,amount,country,merchant,channel,timestamp,status,is_fraud,mcc,product,is_vip
+1,101,120,BR,Padaria,pos,2026-01-01 09:00:00,approved,0,5411,Conta Digital,0
+2,101,80,BR,Supermercado,pos,2026-01-01 09:10:00,approved,0,5411,Conta Digital,0
+3,101,5000,US,Amazon,online,2026-01-01 10:00:00,approved,1,5999,Conta Digital,0
+4,101,7000,NG,Unknown,online,2026-01-01 10:02:00,approved,1,7995,Conta Digital,0
+5,101,9000,PK,Unknown,online,2026-01-01 10:04:00,approved,1,6010,Conta Digital,0
+6,102,50,BR,Café,pos,2026-01-01 11:00:00,approved,0,5812,Conta Digital,0
+7,102,60,BR,Café,pos,2026-01-01 11:05:00,approved,0,5812,Conta Digital,0
+8,103,200,BR,Loja,pos,2026-01-01 12:00:00,approved,0,5311,Conta Digital,0
+9,104,2800,BR,Joalheria,pos,2026-01-01 13:00:00,approved,0,5944,Benefícios Flexíveis,1
+10,104,3200,BR,Joalheria,pos,2026-01-01 13:05:00,approved,1,5944,Benefícios Flexíveis,1
+11,105,150,BR,Posto Ipiranga,pos,2026-01-01 14:00:00,approved,1,5541,Combustíveis e Frotas,1
+12,105,150,BR,Posto Ipiranga,pos,2026-01-01 14:00:00,approved,1,5541,Combustíveis e Frotas,1
+13,106,500,BR,Bet365,online,2026-01-01 15:00:00,approved,1,7995,Premiação,0
+14,107,200,BR,Caixa Eletrônico,atm,2026-01-01 16:00:00,approved,1,6011,Benefícios Flexíveis,0
+15,108,1500,BR,Loja Bloqueada,pos,2026-01-01 17:00:00,approved,1,5311,Conta Digital,1
+16,108,2500,BR,Loja Bloqueada,pos,2026-01-01 17:05:00,approved,1,5311,Conta Digital,1
+17,109,100,BR,Padaria,pos,2026-01-01 18:00:00,approved,0,5411,Conta Digital,0
+18,109,100,BR,Padaria,pos,2026-01-01 18:01:00,approved,0,5411,Conta Digital,0
+19,110,4500,US,Unknown,online,2026-01-01 19:00:00,approved,1,6010,Despesas Corporativas,0
+20,110,6000,NG,Unknown,online,2026-01-01 19:02:00,approved,1,7995,Despesas Corporativas,0
+21,111,2900,BR,Restaurante,pos,2026-01-01 20:00:00,approved,0,5812,Conta Digital,1
+22,111,3100,BR,Restaurante,pos,2026-01-01 20:05:00,approved,1,5812,Conta Digital,1
+23,112,300,BR,Posto Shell,pos,2026-01-01 21:00:00,approved,1,5541,Combustíveis e Frotas,0
+24,113,800,BR,Cassino Online,online,2026-01-01 22:00:00,approved,1,7995,Premiação,1
+25,114,150,BR,Padaria,pos,2026-01-01 23:00:00,approved,0,5411,Conta Digital,0

@@ -49,7 +49,7 @@ def impossible_travel(transaction, data):
     #se mudou de pais em menos de 5 minutos → suspeito
     time_diff = transaction['timestamp'] - last_transaction['timestamp']
 
-    if transaction['country'] != last_transaction['country'] and times_diff <= pd.Timedelta(minutes=5):
+    if transaction['country'] != last_transaction['country'] and time_diff <= pd.Timedelta(minutes=5):
         return True
     
     return False
