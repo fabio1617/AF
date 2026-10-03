@@ -1,0 +1,19 @@
+{
+  "descricao": "Lista de usuários e cartões autorizados para transações internacionais",
+  "autorizados": [
+    {
+      "tipo": "user_id",
+      "identificador": "101",
+      "data_expiracao": "2026-12-31",
+      "limite_valor": 5000.00,
+      "observacao": "Viagem aprovada pelo atendimento"
+    },
+    {
+      "tipo": "card_id",
+      "identificador": "CARD_001",
+      "data_expiracao": "2026-06-30",
+      "limite_valor": 3000.00,
+      "observacao": "Cartão corporativo com autorização permanente revisada semestralmente"
+    }
+  ]
+}

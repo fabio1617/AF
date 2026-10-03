@@ -1,0 +1,17 @@
+{
+  "descricao": "Lista de países de risco para operações financeiras",
+  "padrao": "ISO 3166 alpha-2",
+  "paises": [
+    {"codigo": "KP", "nome": "Coreia do Norte"},
+    {"codigo": "IR", "nome": "Irã"},
+    {"codigo": "MM", "nome": "Mianmar"},
+    {"codigo": "VE", "nome": "Venezuela"},
+    {"codigo": "LB", "nome": "Líbano"},
+    {"codigo": "SY", "nome": "Síria"},
+    {"codigo": "AO", "nome": "Angola"},
+    {"codigo": "HT", "nome": "Haiti"},
+    {"codigo": "NG", "nome": "Nigéria"},
+    {"codigo": "YE", "nome": "Iêmen"},
+    {"codigo": "PK", "nome": "Paquistão"}
+  ]
+}

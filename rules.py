@@ -10,8 +10,16 @@ def high_value(transaction):  #Valor da transação
 
 # 🌍 Regra 2: País de Risco
 # Detecta transações realizadas em países considerados de alto risco
-def risky_country(transaction): #País da transação
-    return transaction['country'] in ['NG', 'PK']
+# Lista de países carregada de listas/paises_risco.json
+import json
+import os
+
+def risky_country(transaction):
+    caminho = os.path.join(os.path.dirname(__file__), 'listas', 'paises_risco.json')
+    with open(caminho, 'r', encoding='utf-8') as f:
+        dados = json.load(f)
+    codigos = [p['codigo'] for p in dados['paises']]
+    return transaction['country'] in codigos
 
 # ⚡ Regra 3: Alta Frequência
 # Detecta quando um usuário realiza mais de 2 transações em um intervalo de 5 minutos
