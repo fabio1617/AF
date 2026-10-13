@@ -5,7 +5,7 @@ from engine import run_rules
 import rules
 from engine import calculate_metrics
 
-st.title('Risk Simulator 🚀')
+st.title('Motor de Risco 🚀')
 
 uploaded_file = st.file_uploader('📂 Faça upload de um arquivo CSV', type=['csv'])
 
@@ -30,29 +30,29 @@ usar_pais_risco = st.sidebar.checkbox('País de Risco', value=True)
 usar_frequencia = st.sidebar.checkbox('Alta Frequência', value=True)
 usar_viagem = st.sidebar.checkbox('Viagem Impossível', value=True)
 
-rules_dict = {}
+#Formato de Lista tuplas (nome, função, peso)
+rules_dict = []
 
 if usar_valor_alto:
-    rules_dict['Valor Alto'] = rules.high_value
+    rules_list.append(('Valor Alto', rules.high_value, 8))
 
 if usar_pais_risco:
-    rules_dict['País de Risco'] = rules.risky_country
+    rules_list.append(('País de Risco', rules.risky_country, 12))
 
 if usar_frequencia:
-    rules_dict['Alta Frequência'] = rules.high_frequency
+    rules_list.append(('Alta Frequência', rules.high_frequency, 10))
 
 if usar_viagem:
-    rules_dict['Viagem Impossível'] = rules.impossible_travel        
+    rules_list.append(('Viagem Impossível', rules.impossible_travel, 11))
 
-results = run_rules(data, rules_dict)
+results = run_rules(data, rules_list)
 
 tp, fp, tn, fn = calculate_metrics(results)
-
-df_resultados = pd.DataFrame(results) 
-df_resultados = df_resultados.rename(columns={  
+ 
+df_resultados = pd.DataFrame(results).rename(columns={  
     'transaction_id': 'ID da Transação',
     'triggered_rules': 'Regras Ativadas',
-    'is_fraud': 'É Fraude'
+    'maior_peso': 'Maior Peso',    'is_fraud': 'É Fraude'
 })
 
 st.write(df_resultados)
