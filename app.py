@@ -31,7 +31,7 @@ usar_frequencia = st.sidebar.checkbox('Alta Frequência', value=True)
 usar_viagem = st.sidebar.checkbox('Viagem Impossível', value=True)
 
 #Formato de Lista tuplas (nome, função, peso)
-rules_dict = []
+rules_list = []
 
 if usar_valor_alto:
     rules_list.append(('Valor Alto', rules.high_value, 8))
@@ -52,7 +52,8 @@ tp, fp, tn, fn = calculate_metrics(results)
 df_resultados = pd.DataFrame(results).rename(columns={  
     'transaction_id': 'ID da Transação',
     'triggered_rules': 'Regras Ativadas',
-    'maior_peso': 'Maior Peso',    'is_fraud': 'É Fraude'
+    'maior_peso': 'Maior Peso',
+    'is_fraud': 'É Fraude'
 })
 
 st.write(df_resultados)
