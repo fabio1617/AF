@@ -53,6 +53,7 @@ df_resultados = pd.DataFrame(results).rename(columns={
     'transaction_id': 'ID da Transação',
     'triggered_rules': 'Regras Ativadas',
     'maior_peso': 'Maior Peso',
+    'decisao': 'Decisão',
     'is_fraud': 'É Fraude'
 })
 
