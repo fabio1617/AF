@@ -1,0 +1,9 @@
+{
+  "descricao": "Produtos com restrição de uso",
+  "produtos": [
+    {"nome": "Benefícios Flexíveis"},
+    {"nome": "Combustíveis e Frotas"},
+    {"nome": "Despesas Corporativas"},
+    {"nome": "Premiação"}
+  ]
+}

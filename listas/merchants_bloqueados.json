@@ -1,0 +1,6 @@
+{
+  "descricao": "Lista de merchants bloqueados",
+  "merchants": [
+    {"nome": "Loja Bloqueada"}
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "descricao": "MCCs restritos",
+  "mcc": [
+    {"codigo": 6010, "descricao": "saque manual"},
+    {"codigo": 6011, "descricao": "saque em caixa eletrônico"},
+    {"codigo": 7995, "descricao": "apostas"}
+  ]
+}
