@@ -29,21 +29,37 @@ usar_valor_alto = st.sidebar.checkbox('Valor Alto', value=True)
 usar_pais_risco = st.sidebar.checkbox('País de Risco', value=True)
 usar_frequencia = st.sidebar.checkbox('Alta Frequência', value=True)
 usar_viagem = st.sidebar.checkbox('Viagem Impossível', value=True)
+usar_vip = st.sidebar.checkbox('Cliente VIP', value=True)
+usar_merchant = st.sidebar.checkbox('Merchant Bloqueado', value=True)
+usar_internacional = st.sidebar.checkbox('Internacioanal Não Autorizado', value=True)
+usar_mcc = st.sidebar.checkbox('MCC Restrito', value=True)
 
 #Formato de Lista tuplas (nome, função, peso)
 rules_list = []
 
 if usar_valor_alto:
-    rules_list.append(('Valor Alto', rules.high_value, 8))
+    rules_list.append(('Valor Alto', rules.high_value, 8, 'negar'))
 
 if usar_pais_risco:
-    rules_list.append(('País de Risco', rules.risky_country, 12))
+    rules_list.append(('País de Risco', rules.risky_country, 12, 'negar'))
 
 if usar_frequencia:
-    rules_list.append(('Alta Frequência', rules.high_frequency, 10))
+    rules_list.append(('Alta Frequência', rules.high_frequency, 10, 'negar'))
 
 if usar_viagem:
-    rules_list.append(('Viagem Impossível', rules.impossible_travel, 11))
+    rules_list.append(('Viagem Impossível', rules.impossible_travel, 11, 'negar'))
+
+if usar_vip:
+    rules_list.append(('Cliente VIP', rules.vip_client, 9, 'aprovar'))
+
+if usar_merchant:
+    rules_list.append(('Merchant Bloqueado', rules.blocked_merchant, 12, 'negar'))
+
+if usar_mcc:
+    rules_list.append(('MCC Restrito', rules.restricted_mcc, 12, 'negar'))
+
+if usar_internacional:
+    rules_list.append(('Internacional Não Autorizado', rules.unauthorized_international, 11, 'negar'))
 
 results = run_rules(data, rules_list)
 

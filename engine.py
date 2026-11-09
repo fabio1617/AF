@@ -7,19 +7,23 @@ def run_rules(data, rules):
         triggered = []
         transaction = row.to_dict()
         
-        for rule_name, rule_func, peso in rules:
+        for rule_name, rule_func, peso, acao in rules:
             try:
                 if rule_func(transaction, data):
-                    triggered.append((rule_name, peso))
+                    triggered.append((rule_name, peso, acao))
             except TypeError:
                 if rule_func(transaction):
-                    triggered.append((rule_name, peso))                
+                    triggered.append((rule_name, peso, acao))                
         # Ordena por peso decrescente (maior peso = maior prioridade)
         triggered.sort(key=lambda x: x[1], reverse=True)
 
-        # Decisão binária: se alguma regra disparou → negar
-        # Regra de aprovação (R05 VIP) podem ser sobrescritas por peso maior
-        decisao = 'negar' if triggered else 'aprovar'
+        # A regra de maior peso decide. Em empate de peso, negar vence.
+        if triggered:
+            maior_peso = triggered[0][1]
+            acoes_do_maior_peso = [r[2] for r in triggered if r[1] == maior_peso]
+            decisao = 'negar' if 'negar' in acoes_do_maior_peso else 'aprovar'
+        else:
+            decisao = 'aprovar'
 
         results.append({
             'transaction_id': row['transaction_id'],
