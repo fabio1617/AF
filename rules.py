@@ -9,6 +9,7 @@ import os
 def high_value(transaction):  #Valor da transação
     return transaction['amount'] > 5000
 
+# 🌍 Regra 2: País de Risco 
 # Detecta transações realizadas em países considerados de alto risco
 # Lista de países carregada de listas/paises_risco.json
 def risky_country(transaction):
@@ -66,7 +67,7 @@ def blocked_merchant(transaction):
     caminho = os.path.join(os.path.dirname(__file__), 'listas', 'merchants_bloqueados.json')
     with open(caminho, 'r', encoding='utf-8') as f:
         dados = json.load(f)
-    merchants = [m['nome'] for m in dados['merchamts']]
+    merchants = [m['nome'] for m in dados['merchants']]
     return transaction['merchant'] in merchants
 
 
@@ -77,16 +78,49 @@ def restricted_mcc(transaction):
     caminho_mcc = os.path.join(os.path.dirname(__file__), 'listas', 'mcc_restritos.json')
     caminho_produtos = os.path.join(os.path.dirname(__file__), 'listas', 'produtos_restritos.json')
 
-    with open( caminho_mss, 'r', encoding= 'utf-8') as f:
+    with open(caminho_mcc, 'r', encoding='utf-8') as f:
         dados_mcc = json.load(f)
 
     with open(caminho_produtos, 'r', encoding='utf-8') as f:
         dados_produtos = json.load(f)
 
-    mcc_restritos = [m['codigo'] for m in dados_mcc['mcc']]
+    mccs_restritos = [m['codigo'] for m in dados_mcc['mcc']]
     produtos_restritos = [p['nome'] for p in dados_produtos['produtos']]
 
     mcc_bloqueado = transaction.get('mcc') in mccs_restritos
-    produto_bloqueado = transaction.get ('product') in produtos_restritos
+    produto_bloqueado = transaction.get('product') in produtos_restritos
 
     return mcc_bloqueado and produto_bloqueado 
+
+# ⭐ Regra 5: Cliente VIP
+# Aprova transações de clientes VIP dentro do limite VIP (padrão R$ 3.000)
+# Usa a coluna is_vip do CSV
+def vip_client(transaction):
+    return transaction.get('is_vip', 0) == 1 and transaction['amount'] <= 3000
+
+
+# 🌐 Regra 8: Transação Internacional Não Autorizada
+# Detecta transações fora do BR sem autorização válida (sem cadastro, expirada ou acima do limite)
+# Lista carregada de listas/autorizados_internacional.json
+def unauthorized_international(transaction):
+    #Transação nacioanl não é avaliada por esta regra
+    if transaction['country'] == 'BR':
+        return False
+
+    caminho = os.path.join(os.path.dirname(__file__), 'listas', 'autorizados_internacional.json')
+    with open(caminho, 'r', encoding='utf-8') as f:
+        dados = json.load(f)
+
+    for item in dados['autorizados']:
+        # A autorização pode ser por user_id ou por card_id
+        if item['tipo'] == 'user_id':
+            valor_transacao = str(transaction['user_id'])
+        else:
+            valor_transacao = str(transaction.get('card_id'))
+        if item['identificador'] == valor_transacao:
+            expirou = transaction['timestamp'] > pd.to_datetime(item['data_expiracao'])
+            acima_limite = transaction['amount'] > item['limite_valor']
+            return expirou or acima_limite
+
+    # Não achou na lista: sem autorização
+    return True        
