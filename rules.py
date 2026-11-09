@@ -89,4 +89,4 @@ def restricted_mcc(transaction):
     mcc_bloqueado = transaction.get('mcc') in mccs_restritos
     produto_bloqueado = transaction.get ('product') in produtos_restritos
 
-    return mcc_bloqueado and produto_bloqueado
+    return mcc_bloqueado and produto_bloqueado 
