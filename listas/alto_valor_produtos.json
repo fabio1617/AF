@@ -1,0 +1,6 @@
+{
+  "descricao": "Produtos que não podem fazer transações de alto valor",
+  "produtos": [
+    {"nome": "Conta Digital"}
+  ]
+}

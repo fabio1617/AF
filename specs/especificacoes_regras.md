@@ -2,14 +2,14 @@
 
 ## Índice de Regras
 
-- [ ] R01: high_value - Alto Valor
-- [ ] R02: risky_country - País de Risco
-- [ ] R03: high_frequency - Alta Frequência
-- [ ] R04: impossible_travel - Viagem Impossível
-- [ ] R05: vip_client - Aprovação para cliente VIP
-- [ ] R06: blocked_merchant - Estabelecimento bloqueado
-- [ ] R07: restricted_mcc - MCC restrito por produto
-- [ ] R08: unauthorized_international - Transação Internacional Não Autorizada
+- [x] R01: high_value - Alto Valor
+- [x] R02: risky_country - País de Risco
+- [x] R03: high_frequency - Alta Frequência
+- [x] R04: impossible_travel - Viagem Impossível
+- [x] R05: vip_client - Aprovação para cliente VIP
+- [x] R06: blocked_merchant - Estabelecimento bloqueado
+- [x] R07: restricted_mcc - MCC restrito por produto
+- [x] R08: unauthorized_international - Transação Internacional Não Autorizada
 
 ---
 
@@ -102,7 +102,7 @@ com intervalo de {tempo} minutos.
 - **Objetivo:** evitar que clientes confiáveis e conhecidos sejam barrados por regras de limite em compras do dia a dia.
 - **Dados:** ID do cliente, lista VIP, limite VIP do cliente, valor da transação.
 - **Condição:** o cliente está na lista VIP E o valor da transação é menor ou igual ao limite VIP do cliente (padrão: R$ 3.000,00). Acima do limite, a regra não dispara e a transação segue para as demais regras.
-- **Decisão:** aprovar. Pode ser sobreposta por regras de peso 12.
+- **Decisão:** aprovar. Pode ser sobreposta por regras de peso 10,11 e 12,
 - **Impacto esperado:** menos atrito para bons clientes. Risco: se uma conta VIP for invadida, o fraudador passa por esta regra até o limite do cliente. Tratamento: revisão periódica da lista VIP e limites conservadores.
 - **Código de motivo:** R05_CLIENTE_VIP
 - **Mensagem ao analista:** "Cliente {id_cliente} está na lista VIP e o valor R$ {valor} está dentro do limite de R$ {limite_vip}."

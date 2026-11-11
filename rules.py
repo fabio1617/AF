@@ -5,9 +5,30 @@ import json
 import os
 
 #🔴 Regra 1: Valor Alto
-# Detecta transações com valor acima de 5.000
-def high_value(transaction):  #Valor da transação
-    return transaction['amount'] > 5000
+# Detecta transações iguais ou acima de R$ 5.000 quando o produto, o cartão ou
+# a empresa (TA) estiver nas listas de restrição
+# Listas: alto_valor_produtos.json, cartoes_restritos.json, empresas_restritas.json
+def high_value(transaction):
+    # Abaixo do limite, a regra nem precisa olhar as listas
+    if transaction['amount'] < 5000:
+        return False
+
+    pasta = os.path.join(os.path.dirname(__file__), 'listas')
+
+    with open(os.path.join(pasta, 'alto_valor_produtos.json'), 'r', encoding='utf-8') as f:
+        produtos = [p['nome'] for p in json.load(f)['produtos']]
+
+    with open(os.path.join(pasta, 'cartoes_restritos.json'), 'r', encoding='utf-8') as f:
+        cartoes = [c['id'] for c in json.load(f)['cartoes']]
+
+    with open(os.path.join(pasta, 'empresas_restritas.json'), 'r', encoding='utf-8') as f:
+        empresas = [e['id'] for e in json.load(f)['empresas']]
+
+    produto_restrito = transaction.get('product') in produtos
+    cartao_restrito = str(transaction.get('card_id')) in cartoes
+    empresa_restrita = str(transaction.get('ta_id')) in empresas
+                                              
+    return produto_restrito or cartao_restrito or empresa_restrita
 
 # 🌍 Regra 2: País de Risco 
 # Detecta transações realizadas em países considerados de alto risco

@@ -1,1 +1,4 @@
-{"cartoes": []}
+{
+  "descricao": "Cartões que não podem fazer transações de alto valor",
+  "cartoes": [{"id": "CARD_001"}]
+}

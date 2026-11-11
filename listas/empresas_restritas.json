@@ -1,1 +1,4 @@
-{"empresas": []}
+{
+  "descricao": "Empresas (TA) que não podem fazer transações de alto valor",
+  "empresas": []
+}
