@@ -1,3 +1,6 @@
+**Data:** 2026-11-16
+**Status:** Aceito
+
 ## Contexto
 
 O motor AF foi idealizado para automatizar a tomada de decisão de transações, considerando especialmente cenários de alto volume e empresas que não possuem uma estrutura operacional robusta para análise manual em tempo integral.
@@ -5,6 +8,11 @@ O motor AF foi idealizado para automatizar a tomada de decisão de transações,
 A proposta é reduzir a dependência de intervenção humana no fluxo inicial de autorização, permitindo que as transações sejam avaliadas por regras automatizadas e recebam uma decisão objetiva.
 
 O projeto considera que diferentes empresas e produtos possuem características operacionais e perfis de risco distintos. Portanto, as políticas de autorização e restrição precisam considerar o segmento e a finalidade do produto utilizado.
+
+## Opções consideradas
+1. Três estados (aprovar, revisar, negar), com fila para um analista decidir.
+2. Dois estados (aprovar ou negar), com contestação feita pelo cliente depois.
+3. Dois estados com confirmação do cliente por mensagem antes de negar.
 
 ## Decisão
 
