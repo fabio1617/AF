@@ -74,12 +74,16 @@ Na barra lateral é possível ligar e desligar cada regra e acompanhar as métri
 
 - [ADR-001: Escala de prioridade das regras](docs/adr/ADR-001-escala-de-prioridade.md)
 - [ADR-002: Explicabilidade por transação](docs/adr/ADR-002-explicabilidade-futura.md)
+- [ADR-003: Decisão binária (aprovar ou negar)](docs/adr/ADR-003-decisao-binaria.md)
+- [ADR-004: Regras com ação e decisão pela regra de maior peso](docs/adr/ADR-004-regras-com-acao.md)
+- [ADR-005: Lista VIP como exceção configurável](docs/adr/ADR-005-lista-vip-excecoes.md)
+- [ADR-006: R07 exige produto restrito E MCC restrito](docs/adr/ADR-006-r07-produto-e-mcc.md)
 
 ## Decisões em aberto
 
-- **R07:** a especificação usa produto restrito **OU** MCC restrito, mas o código usa **E**. A escolha muda as métricas e será registrada em um ADR.
-- **Limite VIP:** o limite de R$ 3.000 deixa passar uma fraude do conjunto de teste.
-- **Explicabilidade:** hoje o app mostra as regras que dispararam, mas não classifica cada transação como acerto ou erro do motor.
+- **Limite VIP:** o limite fixo de R$ 3.000 deixa passar uma fraude do conjunto de teste. Limite e prazo por cliente estão previstos no [ADR-005](docs/adr/ADR-005-lista-vip-excecoes.md) e ainda não foram implementados.
+- **Dados de teste:** as transações 10, 11, 12 e 23 do `data.csv` (produto restrito com MCC comum) não são detectadas pela R07. É preciso revisar se o `is_fraud` delas está correto.
+- **Explicabilidade:** hoje o app mostra as regras que dispararam, mas não classifica cada transação como acerto ou erro do motor ([ADR-002](docs/adr/ADR-002-explicabilidade-futura.md)).
 
 ## Próximos passos
 
