@@ -1,3 +1,5 @@
+# ADR-003: Decisão binária (aprovar ou negar)
+
 **Data:** 2026-11-16
 **Status:** Aceito
 
@@ -27,6 +29,16 @@ A inclusão de um cliente em uma lista VIP não deverá representar uma aprovaç
 Antes de conceder qualquer liberação ou autorização, será necessário identificar qual regra provocou a negativa e analisar o motivo da reprovação.
 
 As regras deverão permitir configurações compatíveis com as características e políticas de cada cliente, produto ou segmento, evitando que restrições específicas de uma operação sejam aplicadas indiscriminadamente a todas as demais.
+
+## Motivo
+- Rapidez: a decisão sai na hora, sem esperar um analista.
+- Custo: não exige uma equipe operacional dedicada a revisar transações.
+- Cobre empresas que não têm equipe disponível em tempo integral, que é o
+  cenário que originou o projeto.
+
+A opção 1 exigiria analistas disponíveis o tempo todo. A opção 3 atrasaria
+cada negativa até o cliente responder e depende de um canal de mensagens
+que o projeto ainda não tem. Ela fica como evolução futura.
 
 ## Consequências
 
