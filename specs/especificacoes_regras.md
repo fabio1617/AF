@@ -127,7 +127,7 @@ com intervalo de {tempo} minutos.
 - **Peso:** 12
 - **Objetivo:** garantir que cartões de benefício e despesas sejam usados apenas para a finalidade definida pela empresa cliente.
 - **Dados:** MCC da transação, produto do cartão, lista de MCCs restritos, lista de produtos com restrição.
-- **Condição:** o produto da transação está na lista de produtos restritos OU o MCC está na lista de MCCs restritos. Produtos restritos: Benefícios flexíveis, Combustível e frotas, Despesas corporativas, Premiação. MCCs restritos: 6010 (saque manual), 6011 (saque em caixa eletrônico), 7995 (apostas).
+- - **Condição:** o produto da transação está na lista de produtos restritos E o MCC está na lista de MCCs restritos. Produtos restritos: Benefícios Flexíveis, Combustíveis e Frotas, Despesas Corporativas, Premiação. MCCs restritos: 6010 (saque manual), 6011 (saque em caixa eletrônico), 7995 (apostas).
 - **Decisão:** negar. Peso 12 — sobrepõe todas as demais regras.
 - **Impacto esperado:** mantém o uso do cartão dentro da política do produto. Risco: cartão cadastrado no produto errado teria saques legítimos negados. Tratamento: conferir cadastro do produto quando houver contestação.
 - **Código de motivo:** R07_MCC_RESTRITO
