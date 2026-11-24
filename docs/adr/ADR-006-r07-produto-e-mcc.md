@@ -38,7 +38,8 @@ do escopo do Mês 1.
 ## Consequências
 - Produto restrito com um MCC comum não dispara a R07. Se esse uso
   precisar de controle, tem que ser tratado por outra regra.
-- As transações 10, 11, 12 e 23 do `data.csv` não são detectadas pela
-  R07. É preciso revisar se o `is_fraud` delas está correto.
+- No `data.csv`, as transações 11 e 23 (combustível em posto, com cartão de
+  combustível) foram reclassificadas como não fraude, porque são o uso
+  previsto do produto.
 - Se os MCCs permitidos variarem muito por produto, a opção 3 pode virar
   uma evolução futura.

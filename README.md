@@ -81,8 +81,8 @@ Na barra lateral é possível ligar e desligar cada regra e acompanhar as métri
 
 ## Decisões em aberto
 
-- **Limite VIP:** o limite fixo de R$ 3.000 deixa passar uma fraude do conjunto de teste. Limite e prazo por cliente estão previstos no [ADR-005](docs/adr/ADR-005-lista-vip-excecoes.md) e ainda não foram implementados.
-- **Dados de teste:** as transações 10, 11, 12 e 23 do `data.csv` (produto restrito com MCC comum) não são detectadas pela R07. É preciso revisar se o `is_fraud` delas está correto.
+- **Limite VIP:** o limite fixo de R$ 3.000 deixa passar duas fraudes do conjunto de teste (transações 10 e 22). Limite e prazo por cliente estão previstos no [ADR-005](docs/adr/ADR-005-lista-vip-excecoes.md) e ainda não foram implementados.
+- **Duplicidade:** a transação 12 (mesma compra repetida no mesmo segundo) passa porque não existe regra de duplicidade.
 - **Explicabilidade:** hoje o app mostra as regras que dispararam, mas não classifica cada transação como acerto ou erro do motor ([ADR-002](docs/adr/ADR-002-explicabilidade-futura.md)).
 
 ## Próximos passos
@@ -91,3 +91,4 @@ Na barra lateral é possível ligar e desligar cada regra e acompanhar as métri
 - Persistir o histórico de transações em banco de dados e calcular regras de velocidade em cache.
 - Expor o motor como API.
 - Trilha de auditoria e backtest de regras.
+- Regra de duplicidade (mesmo valor, merchant e horário).
